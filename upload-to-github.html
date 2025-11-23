@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传到 GitHub - 快速指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 40px;
+        }
+        .method {
+            margin-bottom: 40px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        .method:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+        .method h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        .method h3 {
+            color: #374151;
+            margin: 20px 0 10px 0;
+            font-size: 18px;
+        }
+        .steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        .btn-secondary {
+            background: #10b981;
+        }
+        .btn-secondary:hover {
+            background: #059669;
+        }
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning strong {
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 上传项目到 GitHub</h1>
+            <p>选择最适合您的方法</p>
+        </div>
+        <div class="content">
+            <!-- 方案一：Git 命令行 -->
+            <div class="method">
+                <h2>方案一：使用 Git 命令行（推荐）</h2>
+                <h3>1. 安装 Git</h3>
+                <p>如果您的系统没有安装 Git：</p>
+                <a href="https://git-scm.com/download/win" target="_blank" class="btn">下载 Git for Windows</a>
+                
+                <h3>2. 初始化并提交代码</h3>
+                <p>在项目目录中打开终端，运行：</p>
+                <div class="code-block">cd "d:\AA Limen_work\Limen-AI-Content-Creation-Hub-main"
+git init
+git add .
+git commit -m "Initial commit: ContentForge AI project"</div>
+                
+                <h3>3. 创建 GitHub 仓库</h3>
+                <a href="https://github.com/new" target="_blank" class="btn btn-secondary">创建新仓库</a>
+                <p style="margin-top: 10px;">创建时<strong>不要</strong>勾选 "Initialize this repository with a README"</p>
+                
+                <h3>4. 推送代码</h3>
+                <p>在 GitHub 创建仓库后，运行显示的推送命令：</p>
+                <div class="code-block">git remote add origin https://github.com/你的用户名/仓库名.git
+git branch -M main
+git push -u origin main</div>
+            </div>
+
+            <!-- 方案二：网页上传 -->
+            <div class="method">
+                <h2>方案二：使用 GitHub 网页直接上传（最简单）</h2>
+                <h3>1. 创建仓库</h3>
+                <a href="https://github.com/new" target="_blank" class="btn btn-secondary">创建新仓库</a>
+                
+                <h3>2. 上传文件</h3>
+                <ol class="steps">
+                    <li>在新建的仓库页面，点击 "uploading an existing file" 链接</li>
+                    <li>将项目文件夹中的所有文件拖拽到浏览器中</li>
+                    <li><strong>注意：不要上传 node_modules 文件夹</strong></li>
+                    <li>输入提交信息（如：Initial commit）</li>
+                    <li>点击 "Commit changes" 按钮</li>
+                </ol>
+            </div>
+
+            <!-- 方案三：GitHub Desktop -->
+            <div class="method">
+                <h2>方案三：使用 GitHub Desktop（图形界面）</h2>
+                <h3>1. 下载 GitHub Desktop</h3>
+                <a href="https://desktop.github.com/" target="_blank" class="btn">下载 GitHub Desktop</a>
+                
+                <h3>2. 使用步骤</h3>
+                <ol class="steps">
+                    <li>安装并登录您的 GitHub 账户</li>
+                    <li>点击 "File" → "Add Local Repository"</li>
+                    <li>选择项目文件夹：<code>d:\AA Limen_work\Limen-AI-Content-Creation-Hub-main</code></li>
+                    <li>点击 "Publish repository" 上传到 GitHub</li>
+                </ol>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ 重要提示：</strong>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>不要上传 <code>.env.local</code> 文件（包含 API 密钥）</li>
+                    <li>不要上传 <code>node_modules</code> 文件夹（太大且可以重新安装）</li>
+                    <li>确保 <code>.gitignore</code> 文件已正确配置</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #e5e7eb;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">上传完成后</h3>
+                <p>您的仓库地址将是：</p>
+                <div class="code-block" style="text-align: center; background: #f3f4f6; color: #1f2937;">
+                    https://github.com/您的用户名/仓库名
+                </div>
+                <p style="margin-top: 15px; color: #6b7280;">点击仓库链接即可在浏览器中查看您的项目！</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
